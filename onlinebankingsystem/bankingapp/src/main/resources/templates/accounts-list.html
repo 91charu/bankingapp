@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account List</title>
+</head>
+<body>
+
+<!-- Display success message if present -->
+<div th:if="${message}" class="alert alert-success">
+    <p th:text="${message}"></p>
+</div>
+
+<h1>Accounts</h1>
+<a href="/accounts/new">Add New Account</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Account Holder Name</th>
+        <th>Balance</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="account : ${accounts}">
+        <td th:text="${account.id}"></td>
+        <td th:text="${account.accountHolderName}"></td>
+        <td th:text="${account.balance}"></td>
+        <td>
+            <a th:href="@{/accounts/{id}/edit(id=${account.id})}">Edit</a>
+            <form th:action="@{/accounts/{id}/delete(id=${account.id})}" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

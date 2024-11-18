@@ -9,6 +9,8 @@ public class AccountDto {
     private String accountHolderName;
     private double balance;
 
+    public AccountDto() {}
+
     public AccountDto(Long id, String accountHolderName, double balance) {
         this.id = id;
         this.accountHolderName = accountHolderName;
